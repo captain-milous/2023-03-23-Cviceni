@@ -44,5 +44,36 @@ $(document).ready(function() {
 			}
 		});
 	});  
+	
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	$.getJSON('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail', function(data) {
+		// data obsahuje seznam drinků
+	  	console.log(data);
+	});
+
+	$(document).keydown(function(e) {
+	 	var currentIndex = $('.drink.active').index();
+	  	if (e.which === 37 && currentIndex > 0) {
+	    	// šipka doleva - přejít na předchozí drink
+	    	$('.drink.active').removeClass('active').prev().addClass('active');
+	  	} else if (e.which === 39 && currentIndex < $('.drink').length - 1) {
+	    	// šipka doprava - přejít na následující drink
+	    	$('.drink.active').removeClass('active').next().addClass('active');
+	  	}
+	});
+
+	$('.drink').on('click', function() {
+	  	// zobrazit detaily o drinku
+	});
+
+	$('.carousel').on('mousemove', function(e) {
+	  	// změnit pozici carouselu podle pozice myši
+	});
+
+	$('.drink').on('click', function() {
+	  	var detailsDiv = $(this).find('.details');
+	 	detailsDiv.slideToggle(500);
+	});
+
 
 });
